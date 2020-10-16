@@ -47,7 +47,7 @@ stringData:
     }
 ```
 
-Above you se can see the final result.
+Above you can see the final result.
 
 ## Installation
 
