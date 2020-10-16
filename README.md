@@ -49,6 +49,10 @@ stringData:
 
 Above you can see the final result.
 
+### Limitation
+
+Key Protect has a limit of 7Kb on the size of the plaintext you can wrap.
+
 ## Installation
 
 ```
