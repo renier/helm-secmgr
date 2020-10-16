@@ -1,0 +1,16 @@
+name: "keyprotect"
+version: "0.1.0"
+usage: "Decrypt values using IBM Key Protect"
+description: "Defines a decryption function that can be used in your chart to decrypt values using the IBM Key Protect service"
+ignoreFlags: false
+command: "$HELM_PLUGIN_DIR/$HELM_PLUGIN_NAME"
+platformCommand:
+  - os: linux
+    arch: amd64
+    command: "$HELM_PLUGIN_DIR/$HELM_PLUGIN_NAME"
+  - os: darwin
+    arch: amd64
+    command: "$HELM_PLUGIN_DIR/$HELM_PLUGIN_NAME"
+  - os: windows
+    arch: amd64
+    command: "$HELM_PLUGIN_DIR/$HELM_PLUGIN_NAME.exe"
