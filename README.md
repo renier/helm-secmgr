@@ -39,7 +39,7 @@ apiVersion: v1
 kind: Secret
 type: Opaque
 metadata:
-  name: nats-clients-auth
+  name: some-secret
 stringData:
   clients-auth.json: |
     {
