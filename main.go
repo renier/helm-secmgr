@@ -33,7 +33,6 @@ var (
 	endpoint string
 	token string
 	instanceID string
-	keyID string
 )
 
 func main() {
@@ -63,11 +62,6 @@ func main() {
 		log.Fatalln("no SERVICE_INSTANCE_ID found in env")
 	}
 
-	keyID = os.Getenv("ROOT_KEY_ID")
-	if keyID == "" {
-		log.Fatalln("no ROOT_KEY_ID found in env")
-	}
-
 	// Substitute the necessary values in it.
 	input, err := ioutil.ReadAll(os.Stdin)
 	if err != nil {
@@ -92,7 +86,7 @@ type unwrapResponse struct {
 	Plaintext string
 }
 
-func unwrap(ciphertext string) string {
+func unwrap(keyID, ciphertext string) string {
 	url := endpoint + "/api/v2/keys"
 	body := `{"ciphertext":"` + ciphertext + `"}`
 	tokenPrefix := "bearer "
