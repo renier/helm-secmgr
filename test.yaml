@@ -1,1 +1,1 @@
-- [[ unwrap "ba4d4437-1dca-4b7b-bca1-3effab898798" "eyJjaXBoZXJ0ZXh0IjoibHAxdXNzOGo1UW1qTUt2SkVBTmlVUmVVczMwPSIsIml2IjoiRVlWcStsUjlvNGZDVlJpNyIsInZlcnNpb24iOiI0LjAuMCIsImhhbmRsZSI6ImJhNGQ0NDM3LTFkY2EtNGI3Yi1iY2ExLTNlZmZhYjg5ODc5OCJ9" ]]
+- [[ fetch "secret/stash" "password" ]]
