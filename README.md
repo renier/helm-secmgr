@@ -16,13 +16,13 @@ metadata:
 stringData:
   clients-auth.json: |
     {
-      "token": "[[ secret_ref "groups/abcd-b6ee-defb-d166-39f9999000d4/2d87d1cc-21da-431c-90f5-2bbf359126dc" ]]"
+      "token": "<< secret_ref "groups/abcd-b6ee-defb-d166-39f9999000d4/2d87d1cc-21da-431c-90f5-2bbf359126dc" >>"
     }
 ```
 
 We see a template function (`fetch`) called with two parameters.
 
-`[[ secret_ref ... ]]` is the secret fetching function invocation within different template delimiters (`[[]]`). The function is defined by this plugin and the delimiters are to make sure that only this plugin will process that function and return the true value.
+`<< secret_ref ... >>` is the secret fetching function invocation within different template delimiters (`<<>>`). The function is defined by this plugin and the delimiters are to make sure that only this plugin will process that function and return the true value.
 
 Installing the chart via helm will create the following final manifest before sending it as an object to kubernetes:
 

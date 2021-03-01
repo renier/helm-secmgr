@@ -73,7 +73,7 @@ func main() {
 	if err != nil {
 		log.Fatalln("reading input stream:", err)
 	}
-	tmpl, err := template.New("").Delims("[[", "]]").Funcs(template.FuncMap{
+	tmpl, err := template.New("").Delims("<<", ">>").Funcs(template.FuncMap{
 		"secret_ref": fetch,
 	}).Parse(string(input))
 	if err != nil {
