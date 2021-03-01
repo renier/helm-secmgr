@@ -16,7 +16,7 @@ metadata:
 stringData:
   clients-auth.json: |
     {
-      "token": "[[ secret_ref "groups/aedfed18-b6ee-a626-d166-00039f9999d4/590c839d-912d-32a3-a271-efe27d5b247c" ]]"
+      "token": "[[ secret_ref "groups/abcd-b6ee-defb-d166-39f9999000d4/2d87d1cc-21da-431c-90f5-2bbf359126dc" ]]"
     }
 ```
 
@@ -44,7 +44,7 @@ Above you can see the final result.
 ## Installation
 
 ```
-$ go get -u github.ibm.com/renierm/helm-secmgr
+$ go get -u github.com/renier/helm-secmgr
 ```
 
 ## Configuration
@@ -61,4 +61,4 @@ If you have installed the plugin and have the above configuration set, then use 
 helm upgrade -i --post-renderer helm-secmgr ...
 ```
 
-Questions or problems, please feel free to open an [issue](https://github.ibm.com/renierm/helm-secmgr/issues/new).
+Questions or problems, please feel free to open an [issue](https://github.com/renier/helm-secmgr/issues/new).

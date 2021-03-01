@@ -1,4 +1,4 @@
-module github.ibm.com/renierm/helm-secmgr
+module github.com/renier/helm-secmgr
 
 go 1.15
 
