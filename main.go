@@ -74,7 +74,7 @@ func main() {
 		log.Fatalln("reading input stream:", err)
 	}
 	tmpl, err := template.New("").Delims("[[", "]]").Funcs(template.FuncMap{
-		"fetch": fetch,
+		"secret_ref": fetch,
 	}).Parse(string(input))
 	if err != nil {
 		log.Fatalln("parse yml:", err)
@@ -88,9 +88,8 @@ func main() {
 	fmt.Print(buf.String())
 }
 
-func fetch(path, fieldName string) string {
-	path = strings.Replace(path, "/", "/data/", 1)
-	url := endpoint + "/v1/" + path
+func fetch(path string) string {
+	url := endpoint + "/v1/ibmcloud/arbitrary/secrets/" + path
 
 	resp, err := client.Get(url, http.Header{
 		"x-vault-token": []string{token},
@@ -114,7 +113,7 @@ func fetch(path, fieldName string) string {
 		log.Fatalln("unmarshalling:", err, string(b))
 	}
 
-	responsePath := "data.data."+fieldName
+	responsePath := "data.secret_data.payload"
 	val, ok := Grab(response, responsePath)
 	if !ok {
 		log.Fatalf("did not find path %s in the response", responsePath)

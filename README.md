@@ -1,6 +1,8 @@
-# HELM Vault Postrenderer
+# HELM Postrenderer for IBM Secrets Manager
 
-With this helm v3 post-renderer plugin, you can have vault path references in your chart and they will be fetched and replaced in the  manifest before it gets deployed to kubernetes.
+With this helm v3 post-renderer plugin, you can have vault (via [Secrets Manager](https://cloud.ibm.com/docs/secrets-manager)) path references in your chart and they will be fetched and replaced in the manifest before it gets deployed to kubernetes.
+
+This tool only supports _arbitrary_ secrets per the [Secrets Manager API](https://cloud.ibm.com/apidocs/secrets-manager).
 
 ## Example
 
@@ -14,13 +16,13 @@ metadata:
 stringData:
   clients-auth.json: |
     {
-      "token": "[[ fetch "path/to/secret" "field_name" ]]"
+      "token": "[[ secret_ref "groups/aedfed18-b6ee-a626-d166-00039f9999d4/590c839d-912d-32a3-a271-efe27d5b247c" ]]"
     }
 ```
 
 We see a template function (`fetch`) called with two parameters.
 
-`[[ fetch ... ]]` is the _fetch_ function invocation, within different template delimiters (`[[]]`). The function is defined by this plugin and the delimiters are to make sure that only this plugin will process that function and return the true value.
+`[[ secret_ref ... ]]` is the secret fetching function invocation within different template delimiters (`[[]]`). The function is defined by this plugin and the delimiters are to make sure that only this plugin will process that function and return the true value.
 
 Installing the chart via helm will create the following final manifest before sending it as an object to kubernetes:
 
@@ -42,21 +44,21 @@ Above you can see the final result.
 ## Installation
 
 ```
-$ go get -u github.ibm.com/renierm/helm-vault
+$ go get -u github.ibm.com/renierm/helm-secmgr
 ```
 
 ## Configuration
 
 You need to have the following environment variables set:
 
-* `VAULT_ADDR` - URI to the vault endpoint you are using. 
-* `VAULT_TOKEN` - The vault token used to authenticate.
+* `VAULT_ADDR` - URI to the vault endpoint you are using. You can get this endpoint from your Secrets Manager instance.
+* `VAULT_TOKEN` - The vault token used to authenticate. [How to get this?](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-configure-vault-cli). It will be read from `~/.vault-token` if it is not set in the environment.
 
 ## Usage
 
 If you have installed the plugin and have the above configuration set, then use the `--post-renderer` option in helm to use it:
 ```
-helm upgrade -i --post-renderer helm-vault ...
+helm upgrade -i --post-renderer helm-secmgr ...
 ```
 
-Questions or problems, please feel free to open an [issue](https://github.ibm.com/renierm/helm-vault/issues/new).
+Questions or problems, please feel free to open an [issue](https://github.ibm.com/renierm/helm-secmgr/issues/new).

@@ -1,4 +1,4 @@
-module github.ibm.com/renierm/helm-vault
+module github.ibm.com/renierm/helm-secmgr
 
 go 1.15
 

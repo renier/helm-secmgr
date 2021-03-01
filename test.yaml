@@ -1,1 +1,1 @@
-- [[ fetch "secret/stash" "password" ]]
+- [[ secret_ref "groups/aedfed18-b6ee-a626-d166-00039f9999d4/590c839d-912d-32a3-a271-efe27d5b247c" ]]
